@@ -1,0 +1,29 @@
+{% extends 'guides/base.html' %}
+
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% load static %}
+{% load leaflet_tags %}
+
+    {% leaflet_js %}
+    {% leaflet_css %}
+
+
+
+<h1>Welcome to the Walker Guide Application.</h1>
+
+<div>
+   {% leaflet_map "BaseMap" %}
+</div>
+<div>
+    <script type="text/javascript" src="{% static 'dist/leaflet.ajax.js' %}"></script>
+</div>
+
+
+    <script type="text/javascript">
+        function poi = new L.GeoJSON
+    </script>
+{% endblock %}
+

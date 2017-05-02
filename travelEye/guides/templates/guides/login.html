@@ -1,0 +1,40 @@
+{% extends 'guides/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h2>Log In</h2>
+
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p>
+                    <span class="error">
+                        <strong>{{ error|escape }}</strong>
+                    </span>
+                </p>
+        {% endfor %}
+        {% for error in form.non_field.errors %}
+            <p>
+                    <span class="error">
+                        <strong>{{ error|escape }}</strong>
+                    </span>
+                </p>
+        {% endfor %}
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <p class="error">You are already logged in.</p>
+
+    {% else %}
+
+        <form method="post" action="{% url 'guides:login %}"
+        {% csrf_token %}
+        <table>{{ form.as_table }}</table>
+
+        <input type='submit' value='Log In/>
+        </form>
+    {% endif %}
+
+{% endblock %}
+

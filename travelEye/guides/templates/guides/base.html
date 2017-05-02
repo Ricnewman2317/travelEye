@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock %} </title> {# Accept any variables as defined in pages extending this base.html. #}
+        <meta name="keywords" content="GPS, Python, Django" /> {# relevant keywords #}
+        <meta name="description" content="Visual App for Navigation" /> {# basic description. #}
+        <meta name="viewport" content="width=device-width, initial-scale=1"  />{# Facilitate mobile screen rendering. #}
+        {% load leaflet_tags %}
+        {% load static %}
+        {% leaflet_js plugins='forms' %}
+       {#  {% leaflet_css plugins = 'forms' %} #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/myStyle.css' %}" />
+    </head>
+
+<body>
+    <div class="row">
+        <div class="col-sm-2">
+            <ul class="sidebar-nav">
+                <li><a href=" ">Login</a> </li>
+                <li><a href=" ">Sign Up </a> </li>
+            </ul>
+        </div>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+</body>
+
+</html>
